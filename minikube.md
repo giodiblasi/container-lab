@@ -9,5 +9,19 @@
   docker build -t giodiblasi/politeservice <srcPath>
 
 + create deploy named "polite"
-> kubectl run polite --image=giodiblasi/politeservice --image-pull-policy=Never --port=4000
+> kubectl run polite --image=giodiblasi/politeservice --image-pull-policy=Never --port=3000
+The port is the same port configred on expressjs server
+
++ To create a service (expose one or more pods):
+> kubectl expose deployment/polite --type="NodePort" --port 3000
+this creates a service (a port will be assigne to it), use kubectl get services to view info about it
+
+Get minikube ip and service port with:
+> $(minikube ip)
+> $(kubectl get services/polite -o go-template='{{(index .spec.ports 0).nodePort}}')
+use ip and port to access to app:
+> curl http://ip:port/giovanni/hello
+
++ to open a bash on pod
+> kubectl exec -ti  $POD_NAME bash
 
