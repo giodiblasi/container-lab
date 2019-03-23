@@ -6,7 +6,7 @@ const server = app.listen(3000, function () {
 });
 
 app.get('/:username/hello', function (req, res) {
-  res.send(`Hi ${req.params.username}`);
+    res.send(`Hello ${req.params.username}!`);
 });
 
 app.get('/stop', (req, res)=>{
