@@ -14,4 +14,11 @@ services:
         volumes:
             - ./userService:/usr/src/app
         command: ["npm", "run","watch"]
+    mainapp:
+        build: ./mainApp
+        ports:
+            - 3003:3000
+        volumes:
+            - ./mainApp:/usr/src/app
+        command: ["npm", "run","watch"]
 
