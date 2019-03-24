@@ -1,12 +1,14 @@
 var express = require('express');
 var app = express();
 
-const server = app.listen(3000, function () {
-  console.log(`Example app listening on port 3000!`);
+const PORT = process.env.PORT || 3000;
+
+const server = app.listen(PORT, function () {
+  console.log(`Polite Service listening on port ${PORT}`);
 });
 
 app.get('/:username/hello', function (req, res) {
-  res.send(`Hi ${req.params.username}`);
+    res.send(`Hello ${req.params.username}!`);
 });
 
 app.get('/stop', (req, res)=>{
