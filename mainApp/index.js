@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const axios = require('axios');
 
+const PORT = process.env.PORT || 3000;
 const USERS_SERVICE_URL = process.env.USERS_SERVICE_URL;
 const POLITE_SERVICE_URL = process.env.POLITE_SERVICE_URL;
 
@@ -12,6 +13,6 @@ app.get('/:userid/sayhello', function (req, res) {
         .catch(err => res.send("Houston we have a problem"));
 });
 
-app.listen(3000, function () {
-  console.log(`Example app listening on port 3000!`);
+app.listen(PORT, function () {
+  console.log(`Main App listening on port ${PORT}!`);
 });

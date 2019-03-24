@@ -1,29 +1,38 @@
 version: '3'
 services:
     polite:
-        build: ./politeService
+        build: 
+            context: ./politeService
+            args:
+                PORT: 8080
         ports:
-            - 3001:3000
+            - 3001:8080
         volumes:
             - ./politeService:/usr/src/app
         command: ["npm", "run","watch"]
     users:
-        build: ./userService
+        build: 
+            context: ./userService
+            args:
+                PORT: 8080
         ports:
-            - 3002:3000
+            - 3002:8080
         volumes:
             - ./userService:/usr/src/app
         command: ["npm", "run","watch"]
     mainapp:
         environment:
-            POLITE_SERVICE_URL: 'http://polite:3000/'
-            USERS_SERVICE_URL: 'http://users:3000/'
-        build: ./mainApp
+            POLITE_SERVICE_URL: 'http://polite:8080/'
+            USERS_SERVICE_URL: 'http://users:8080/'
+        build: 
+            context: ./mainApp
+            args:
+                PORT: 8080
         depends_on:
             - polite
             - users
         ports:
-            - 3003:3000
+            - 3003:8080
         volumes:
             - ./mainApp:/usr/src/app
         command: ["npm", "run","watch"]
