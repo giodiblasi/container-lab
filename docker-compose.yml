@@ -15,7 +15,13 @@ services:
             - ./userService:/usr/src/app
         command: ["npm", "run","watch"]
     mainapp:
+        environment:
+            POLITE_SERVICE_URL: 'http://polite:3000/'
+            USERS_SERVICE_URL: 'http://users:3000/'
         build: ./mainApp
+        depends_on:
+            - polite
+            - users
         ports:
             - 3003:3000
         volumes:
