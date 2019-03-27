@@ -1,4 +1,4 @@
-# This is a lab for my experimets on Docker and Kubernetes
+# This is a lab for my experiments on Docker and Kubernetes
 
 I have two service
 + Polite Service: Given a name it greets
