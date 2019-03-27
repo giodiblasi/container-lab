@@ -35,4 +35,5 @@ The way to copose these file is:
 docker-compose -f docker-compose.yaml -f docker-compose-dev.yaml up
 ```
 
-
+note that the order of .yaml files is important, the last overwrite options defined 
+in the first.
