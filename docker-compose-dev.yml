@@ -1,0 +1,15 @@
+version: '3'
+services:
+    polite:
+        volumes:
+            - ./politeService:/usr/src/app
+        command: ["npm", "run","watch"]
+    users:
+        volumes:
+            - ./userService:/usr/src/app
+        command: ["npm", "run","watch"]
+    mainapp:
+        volumes:
+            - ./mainApp:/usr/src/app
+        command: ["npm", "run","watch"]
+
