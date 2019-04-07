@@ -15,6 +15,9 @@ this will create a pod with our application ( a pod could contains more than an 
 + The port is the same port configred on expressjs server
 + image-pull-policy=Never tells to kubectl to do not download image from remote registry
 
+# create a pods from yaml
+> kubectl create -f pod-description.yaml
+
 # To create a service (expose one or more pods):
 > kubectl expose deployment/polite --type="NodePort" --port 3000
 this creates a service (a port will be assigne to it), use kubectl get services to view info about it
@@ -33,3 +36,11 @@ this creates a service (a port will be assigne to it), use kubectl get services 
 + to open minikube dashboard
 > minikube dashboard
 
+
+# Log
+To get log from a pod:
+> kubectl logs <podname>
+ If in a pod there are more pods we can get logs from a specific container with -c option
+
+# Send Request to pods without service
+> kubectl port-forward <podname> localport:podport
