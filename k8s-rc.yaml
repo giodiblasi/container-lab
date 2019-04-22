@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+    name: politereplicationcontroller
+spec:
+    replicas: 2
+    selector:
+        env: dev
+        app: polite
+    template:
+        metadata:
+            labels:
+                env: dev
+                app: polite
+        spec:
+            containers:
+                - image: politecontainer
+                  name: kubia
+                  imagePullPolicy: Never
+                  ports:
+                      - containerPort: 8080
+                        protocol: TCP
